@@ -8,7 +8,7 @@
 //
 import UIKit
 
-open class DropDown : UITextField{
+open class DropDownTextField : UITextField{
 
     var arrow : Arrow!
     var table : UITableView!
@@ -341,7 +341,7 @@ open class DropDown : UITextField{
 }
 
 //MARK: UITextFieldDelegate
-extension DropDown : UITextFieldDelegate {
+extension DropDownTextField : UITextFieldDelegate {
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         superview?.endEditing(true)
         return false
@@ -371,7 +371,7 @@ extension DropDown : UITextFieldDelegate {
 
 }
 ///MARK: UITableViewDataSource
-extension DropDown: UITableViewDataSource {
+extension DropDownTextField: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArray.count
@@ -402,12 +402,12 @@ extension DropDown: UITableViewDataSource {
         cell?.textLabel?.font = self.font
         cell?.textLabel?.textAlignment = self.textAlignment
         cell?.textLabel?.numberOfLines = 0
-        cell?.textLabel?.lineBreakMode = .byWrodWrapping
+        cell?.textLabel?.lineBreakMode = .byWordWrapping
         return cell!
     }
 }
 //MARK: UITableViewDelegate
-extension DropDown: UITableViewDelegate {
+extension DropDownTextField: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = (indexPath as NSIndexPath).row
         let selectedText = self.dataArray[self.selectedIndex!]
